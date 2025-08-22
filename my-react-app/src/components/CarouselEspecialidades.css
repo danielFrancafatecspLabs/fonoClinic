@@ -1,0 +1,26 @@
+.caption-bottom {
+  bottom: 20px; /* Legendas na parte inferior */
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+.carousel-caption h3 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: white;
+  animation: fadeIn 2.5s ease-in-out;
+}
+
+.carousel-caption p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: white;
+  animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

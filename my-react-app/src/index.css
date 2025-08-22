@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
+
+:root {
+  --brand-primary: #0b6b9b; /* azul da logo (ajustável) */
+  --brand-accent: #ff7a18; /* mais vibrante */
+  --muted: #6c757d;
+  --bg: #ffffff;
+  --navbar-height: 120px; /* compensação para navbar fixed (aumentado para garantir espaço) */
+}
+
+/* Floating whatsapp helper (global) */
+.float {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 40px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  transition: 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita que o carrossel quebre para a direita */
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Compensate for the fixed top navbar so content isn't hidden behind it */
+body {
+  padding-top: var(--navbar-height);
+}
+@media (max-width: 991px) {
+  body {
+    padding-top: 100px;
+  }
+}
+
+/* When navigating to an anchor (#id), ensure the section isn't hidden behind the fixed navbar */
+section[id] {
+  scroll-margin-top: calc(var(--navbar-height) + 12px);
+}
+
+/* Cursive brand for titles */
+h1,
+h2,
+h3,
+h4,
+.brand-title {
+  font-family: "Dancing Script", cursive;
+  color: var(--brand-primary);
+  font-weight: 700;
+}
+
+/* Small helpers */
+.muted {
+  color: var(--muted);
+}
+.brand-badge {
+  background: linear-gradient(135deg, var(--brand-primary), #0d8fb5);
+  color: #fff;
+}
