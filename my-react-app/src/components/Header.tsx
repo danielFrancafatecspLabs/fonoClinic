@@ -80,7 +80,6 @@ export default function Header(): JSX.Element {
     { id: "servicos", label: "Serviços" },
     { id: "sobre", label: "Sobre" },
     { id: "localizacao", label: "Localização" },
-    { id: "contato", label: "Contato" },
   ];
 
   const brandStyle: React.CSSProperties = {
@@ -101,13 +100,13 @@ export default function Header(): JSX.Element {
         className="site-navbar"
         style={{
           zIndex: 99999,
-          background: "#fff",
-          backgroundColor: "#fff",
+          background: "rgba(255,255,255,0.65)",
+          backgroundColor: "rgba(255,255,255,0.65)",
           opacity: 1,
           height: "var(--navbar-height)",
           minHeight: "var(--navbar-height)",
           boxShadow: "0 6px 18px rgba(16,24,40,0.08)",
-          backdropFilter: "none",
+          backdropFilter: "blur(12px)",
         }}
       >
         <Container
@@ -147,15 +146,16 @@ export default function Header(): JSX.Element {
 
           {/* Desktop nav: right aligned, visible on lg+ */}
           <Nav className="d-none d-lg-flex ms-auto gap-3 align-items-center">
-            {nav.map((n) => (
+            {nav.map((n, idx) => (
               <a
                 key={n.id}
                 href={`#${n.id}`}
                 className={`nav-link ${active === n.id ? "active" : ""}`}
                 style={{
-                  color: active === n.id ? "var(--brand-accent)" : "#111",
                   fontWeight: active === n.id ? 700 : 500,
                   textTransform: "capitalize",
+                  color: active === n.id ? "var(--brand-accent)" : "#111",
+                  transition: "color 0.3s",
                 }}
               >
                 {n.label}
@@ -182,18 +182,16 @@ export default function Header(): JSX.Element {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className="d-flex flex-column gap-3 align-items-start">
-                    {nav.map((n) => (
+                    {nav.map((n, idx) => (
                       <a
                         key={n.id}
                         href={`#${n.id}`}
-                        className={`nav-link ${
-                          active === n.id ? "active" : ""
-                        }`}
+                        className={`nav-link ${active === n.id ? "active" : ""}`}
                         style={{
-                          color:
-                            active === n.id ? "var(--brand-accent)" : "#222",
                           fontWeight: active === n.id ? 700 : 500,
                           textTransform: "capitalize",
+                          color: active === n.id ? "var(--brand-accent)" : "#222",
+                          transition: "color 0.3s",
                         }}
                       >
                         {n.label}
@@ -207,8 +205,13 @@ export default function Header(): JSX.Element {
         </Container>
 
         <style>{`
-          /* Light navbar for brand-forward layout */
-          .site-navbar { background: #fff !important; box-shadow: 0 6px 18px rgba(16,24,40,0.06) !important; opacity: 1 !important; }
+          /* Semi-transparent frosted glass navbar */
+          .site-navbar {
+            background: rgba(255,255,255,0.65) !important;
+            box-shadow: 0 6px 18px rgba(16,24,40,0.06) !important;
+            opacity: 1 !important;
+            backdrop-filter: blur(12px) !important;
+          }
           /* Brand and nav link visibility (don't force spans so letters can be colored) */
           .site-navbar .brand-title, .site-navbar .navbar-brand { color: #111 !important; }
           .brand-title img { display:inline-block }
@@ -216,7 +219,10 @@ export default function Header(): JSX.Element {
           .site-navbar .nav-link { position: relative; padding-bottom: 6px; text-decoration: none; color: #111 !important; }
           .site-navbar .nav-link::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%) scaleX(0); bottom: 0; height: 3px; width: 60%; background: rgba(51,51,51,0.12); border-radius: 3px; transition: transform .28s ease; transform-origin: center; }
           .site-navbar .nav-link:hover::after { transform: translateX(-50%) scaleX(1); }
-          .site-navbar .nav-link.active::after { transform: translateX(-50%) scaleX(1); background: linear-gradient(90deg,var(--brand-accent), #333); }
+          .site-navbar .nav-link.active::after {
+            transform: translateX(-50%) scaleX(1);
+            background: linear-gradient(90deg,var(--brand-accent), #ffd23f, #6be1b8, #3da4ff, #a066ff);
+          }
           /* Toggle visibility */
           .navbar-toggler { border-color: rgba(0,0,0,0.08) !important; }
           .navbar-toggler-icon { filter: none !important; }

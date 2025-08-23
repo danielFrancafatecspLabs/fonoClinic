@@ -29,11 +29,19 @@
 }
 
 body,
-html {
+html,
+body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Evita que o carrossel quebre para a direita */
-  background: var(--bg);
+  background: linear-gradient(
+    90deg,
+    #e0f7fa 0%,
+    #fce4ec 25%,
+    #fffde7 50%,
+    #e1f5fe 75%,
+    #f3e5f5 100%
+  );
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

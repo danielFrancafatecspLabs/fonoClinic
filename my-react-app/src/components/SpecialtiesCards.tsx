@@ -59,7 +59,7 @@ const dataSource: Specialty[] = [
   },
 ];
 
-const EspecialidadesCards: React.FC = () => {
+const SpecialtiesCards: React.FC = () => {
   const [displayedText, setDisplayedText] = useState("");
   const fullText = "Nossas Especialidades";
 
@@ -82,8 +82,16 @@ const EspecialidadesCards: React.FC = () => {
   // No carousel: we'll render a responsive grid of cards below
 
   return (
-    <section id="servicos" className="py-5 bg-light">
-      <div className="container px-5 my-5">
+    <section id="servicos" className="specialties-section">
+      <style>{`
+        .specialties-section {
+          margin-top: 0rem !important;
+          background: linear-gradient(90deg, #e0f7fa 0%, #fce4ec 25%, #fffde7 50%, #e1f5fe 75%, #f3e5f5 100%) !important;
+          padding-top: 2.5rem !important;
+          padding-bottom: 1.5rem !important;
+        }
+      `}</style>
+      <div className="container px-0 my-0">
         {/* Título animado */}
         <div className="row gx-5 justify-content-center mb-5">
           <div className="col-lg-8 col-xl-6">
@@ -108,20 +116,31 @@ const EspecialidadesCards: React.FC = () => {
           {dataSource.map((item, idx) => (
             <div className="col-12 col-md-6 col-lg-4" key={idx}>
               <div className="card h-100 shadow-sm border-0">
-                <img
-                  className="card-img-top"
-                  src={item.Image}
-                  alt={item.Title}
-                  style={{ height: 200, objectFit: "cover" }}
-                />
-                <div className="card-body p-4">
-                  <div className="badge bg-primary text-white rounded-pill mb-2">
-                    {/* blue flag */}
-                    Especialidade
+                <section
+                  id="especialidades"
+                  style={{
+                    background: "#fff",
+                    paddingTop: 0,
+                    paddingBottom: "2.5rem",
+                  }}
+                >
+                  <img
+                    className="card-img-top"
+                    src={item.Image}
+                    alt={item.Title}
+                    style={{ height: 200, objectFit: "cover" }}
+                  />
+                  <div className="card-body p-4">
+                    <div className="badge bg-primary text-white rounded-pill mb-2">
+                      {/* blue flag */}
+                      Especialidade
+                    </div>
+                    <h5 className="card-title mb-3 brand-title">
+                      {item.Title}
+                    </h5>
+                    <p className="card-text mb-0">{item.Description}</p>
                   </div>
-                  <h5 className="card-title mb-3 brand-title">{item.Title}</h5>
-                  <p className="card-text mb-0">{item.Description}</p>
-                </div>
+                </section>
               </div>
             </div>
           ))}
@@ -139,4 +158,4 @@ const EspecialidadesCards: React.FC = () => {
   );
 };
 
-export default EspecialidadesCards;
+export default SpecialtiesCards;

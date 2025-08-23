@@ -1,31 +1,31 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Especialidades from "./SpecialtiesCards";
-import Sobre from "./Sobre";
 import Hero from "./Hero";
-import Newsletter from "./Newsletter";
+import SpecialtiesCards from "./SpecialtiesCards";
+import Sobre from "./Sobre";
 
 function Inicio() {
   return (
     <main>
       <Hero />
-
       <section
-        id="servicos"
-        style={{ paddingTop: "calc(var(--navbar-height) - 10px)" }}
+        id="especialidades"
+        style={{
+          background:
+            "linear-gradient(90deg, #e0f7fa 0%, #fce4ec 25%, #fffde7 50%, #e1f5fe 75%, #f3e5f5 100%)",
+          paddingTop: "2.5rem",
+          paddingBottom: "2.5rem",
+        }}
       >
-        <Especialidades />
+        <SpecialtiesCards />
       </section>
-
       <section
         id="sobre"
         style={{ paddingTop: "calc(var(--navbar-height) - 10px)" }}
       >
         <Sobre />
       </section>
-
-      <Newsletter />
     </main>
   );
 }
