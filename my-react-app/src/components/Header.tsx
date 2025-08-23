@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "smart-webcomponents-react/source/styles/default.css";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -186,11 +187,14 @@ export default function Header(): JSX.Element {
                       <a
                         key={n.id}
                         href={`#${n.id}`}
-                        className={`nav-link ${active === n.id ? "active" : ""}`}
+                        className={`nav-link ${
+                          active === n.id ? "active" : ""
+                        }`}
                         style={{
                           fontWeight: active === n.id ? 700 : 500,
                           textTransform: "capitalize",
-                          color: active === n.id ? "var(--brand-accent)" : "#222",
+                          color:
+                            active === n.id ? "var(--brand-accent)" : "#222",
                           transition: "color 0.3s",
                         }}
                       >
